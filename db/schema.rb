@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430211354) do
+ActiveRecord::Schema.define(:version => 20130430225621) do
 
   create_table "tests", :force => true do |t|
     t.string   "uid",        :default => ""
-    t.string   "html",       :default => ""
-    t.string   "css",        :default => ""
-    t.string   "js",         :default => ""
+    t.text     "html",       :default => ""
+    t.text     "css",        :default => ""
+    t.text     "js",         :default => ""
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
     t.boolean  "is_new",     :default => true

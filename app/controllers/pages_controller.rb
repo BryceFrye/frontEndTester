@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @tests = Test.all
+    @test = Test.new
   end
 end

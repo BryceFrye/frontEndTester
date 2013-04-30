@@ -7,6 +7,8 @@ class TestsController < ApplicationController
     @test = Test.new(params[:test])
     @test.uid = Test.generate_uid
     if @test.save
+      cookies[:recent_tests] = '' unless cookies[:recent_tests]
+      cookies[:recent_tests] = cookies[:recent_tests] + ",#{@test.uid} - Created #{@test.created_at}"
       redirect_to "/#{@test.uid}"
     else
       render :new
@@ -60,5 +62,9 @@ class TestsController < ApplicationController
       # Add a flash error here
       redirect_to :js
     end
+  end
+  
+  def update_recent_tests
+    
   end
 end

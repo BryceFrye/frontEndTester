@@ -1,10 +1,12 @@
 <% provide(:title, 'HTML Editor') %>
-<h1>Edit HTML Here</h1>
-<hr />
-<div id="uid" data-uid="<%= @test.uid %>">
-<div id="html_editor_container" class="editor_container">
-	<%= form_for @test, :url => { action: :update_html } do |f| %>
-		<%= f.text_area :html, value: @test.html %>
-		<%= f.submit "Save", id: "save" %>
-	<% end %>
+<div id="front_end_tester_main_container">
+	<h1>Edit HTML Here</h1>
+	<hr />
+	<div id="uid" data-uid="<%= @test.uid %>">
+	<div id="html_editor_container" class="editor_container">
+		<%= form_for @test, :url => { action: :update_html } do |f| %>
+			<%= f.text_area :html, value: @test.html %>
+			<%= f.submit "Save", id: "save" %>
+		<% end %>
+	</div>
 </div>

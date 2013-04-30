@@ -1,10 +1,12 @@
 <% provide(:title, 'JavaScript Editor') %>
-<h1>Edit JavaScript Here</h1>
-<hr />
-<div id="uid" data-uid="<%= @test.uid %>">
-<div id="js_editor_container" class="editor_container">
-	<%= form_for @test, :url => { action: :update_js } do |f| %>
-		<%= f.text_area :js, value: @test.js %>
-		<%= f.submit "Save", id: "save" %>
-	<% end %>
+<div id="front_end_tester_main_container">
+	<h1>Edit JavaScript Here</h1>
+	<hr />
+	<div id="uid" data-uid="<%= @test.uid %>">
+	<div id="js_editor_container" class="editor_container">
+		<%= form_for @test, :url => { action: :update_js } do |f| %>
+			<%= f.text_area :js, value: @test.js %>
+			<%= f.submit "Save", id: "save" %>
+		<% end %>
+	</div>
 </div>

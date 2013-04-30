@@ -1,5 +1,6 @@
 <body id="show_test_page">
-	<div id="uid" data-uid="<%= @test.uid %>"></div>
+	<div id="uid" data-uid="<%= @test.uid %>" 
+								data-controls-state="<%= cookies[:controls_state] %>"></div>
 	<style type="text/css">
 		<%= raw @test.css %>
 	</style>

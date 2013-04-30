@@ -7,6 +7,7 @@ class TestsController < ApplicationController
     @test = Test.new(params[:test])
     @test.uid = Test.generate_uid
     if @test.save
+      cookies[:controls_state] = 'show'
       cookies[:recent_tests] = '' unless cookies[:recent_tests]
       cookies[:recent_tests] = cookies[:recent_tests] + ",#{@test.uid} - Created #{@test.created_at}"
       redirect_to "/#{@test.uid}"
@@ -64,7 +65,12 @@ class TestsController < ApplicationController
     end
   end
   
-  def update_recent_tests
-    
+  def toggle_controls
+    if params[:controls_state] == 'show'
+      cookies[:controls_state] = 'show'
+    elsif params[:controls_state] == 'hide'
+      cookies[:controls_state] = 'hide'
+    end
+    render nothing: true
   end
 end

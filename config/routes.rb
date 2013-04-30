@@ -9,6 +9,7 @@ FrontEndTester::Application.routes.draw do
   put ':uid/css/update' => 'tests#update_css', as: :update_test_css
   get ':uid/js' => 'tests#js', as: :js
   put ':uid/js/update' => 'tests#update_js', as: :update_test_js
+  get 'tests/toggle_controls/:controls_state' => 'tests#toggle_controls'
   resources :tests
   # The priority is based upon order of creation:
   # first created -> highest priority.

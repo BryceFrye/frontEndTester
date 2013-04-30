@@ -8,8 +8,11 @@ class TestsController < ApplicationController
     @test.uid = Test.generate_uid
     if @test.save
       cookies[:controls_state] = 'show'
-      cookies[:recent_tests] = '' unless cookies[:recent_tests]
-      cookies[:recent_tests] = cookies[:recent_tests] + ",#{@test.uid} - Created #{@test.created_at}"
+      if cookies[:recent_tests]
+        cookies[:recent_tests] = cookies[:recent_tests] + ",#{@test.uid} - Created #{@test.created_at}"
+      else
+        cookies[:recent_tests] = ",#{@test.uid} - Created #{@test.created_at}"
+      end
       redirect_to "/#{@test.uid}"
     else
       render :new

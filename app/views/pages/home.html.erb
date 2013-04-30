@@ -2,7 +2,7 @@
 	<%= form_for @test, :url => { action: :create, controller: :tests } do |f| %>
 		<% f.submit "Create New Test Page" %>
 	<% end %>
-	<% unless cookies[:recent_tests] == '' %>
+	<% if cookies[:recent_tests] %>
 		<% cookies[:recent_tests][0] = '' %>
 		<% recent_tests = cookies[:recent_tests].split(',') %>
 		<p>Your Recent Test Pages:</p>

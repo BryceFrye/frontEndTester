@@ -1,0 +1,8 @@
+<% provide(:title, 'HTML Editor') %>
+<h1>Edit HTML Here</h1>
+<hr />
+<div id="uid" data-uid="<%= @test.uid %>">
+<div id="html_editor_container" class="editor_container">
+		<textarea><%= @test.html %></textarea>
+		<button id="save">Save</button>
+</div>

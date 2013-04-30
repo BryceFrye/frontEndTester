@@ -1,0 +1,8 @@
+<% provide(:title, 'JavaScript Editor') %>
+<h1>Edit JavaScript Here</h1>
+<hr />
+<div id="uid" data-uid="<%= @test.uid %>">
+<div id="js_editor_container" class="editor_container">
+		<textarea><%= @test.js %></textarea>
+		<button id="save">Save</button>
+</div>

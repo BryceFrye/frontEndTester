@@ -1,6 +1,4 @@
 class TestsController < ApplicationController
-  include ApplicationHelper
-  
   def new
     @test = Test.new
   end
@@ -17,9 +15,6 @@ class TestsController < ApplicationController
   
   def show
     @test = Test.find_by_uid(params[:uid])
-    @test.html = replace_placeholders(@test.html)
-    @test.css = replace_placeholders(@test.css)
-    @test.js = replace_placeholders(@test.js)
   end
   
   def html
@@ -28,10 +23,13 @@ class TestsController < ApplicationController
   
   def update_html
     @test = Test.find_by_uid(params[:uid])
-    html = params[:html].gsub(/\$PERIOD\$/, '.')
-    @test.update_attribute(:html, html)
-    @test.save
-    render nothing: true
+    @test.update_attributes(params[:test])
+    if @test.save
+      redirect_to :html
+    else
+      # Add a flash error here
+      redirect_to :html
+    end
   end
   
   def css
@@ -40,10 +38,13 @@ class TestsController < ApplicationController
   
   def update_css
     @test = Test.find_by_uid(params[:uid])
-    css = params[:css].gsub(/\$PERIOD\$/, '.')
-    @test.update_attribute(:css, css)
-    @test.save
-    render nothing: true
+    @test.update_attributes(params[:test])
+    if @test.save
+      redirect_to :css
+    else
+      # Add a flash error here
+      redirect_to :css
+    end
   end
   
   def js
@@ -52,9 +53,12 @@ class TestsController < ApplicationController
   
   def update_js
     @test = Test.find_by_uid(params[:uid])
-    css = params[:js].gsub(/\$PERIOD\$/, '.')
-    @test.update_attribute(:js, css)
-    @test.save
-    render nothing: true
+    @test.update_attributes(params[:test])
+    if @test.save
+      redirect_to :js
+    else
+      # Add a flash error here
+      redirect_to :js
+    end
   end
 end

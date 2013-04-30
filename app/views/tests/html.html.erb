@@ -3,6 +3,8 @@
 <hr />
 <div id="uid" data-uid="<%= @test.uid %>">
 <div id="html_editor_container" class="editor_container">
-		<textarea><%= @test.html %></textarea>
-		<button id="save">Save</button>
+	<%= form_for @test, :url => { action: :update_html } do |f| %>
+		<%= f.text_area :html, value: @test.html %>
+		<%= f.submit "Save", id: "save" %>
+	<% end %>
 </div>

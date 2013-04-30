@@ -3,6 +3,8 @@
 <hr />
 <div id="uid" data-uid="<%= @test.uid %>">
 <div id="css_editor_container" class="editor_container">
-		<textarea><%= @test.css %></textarea>
-		<button id="save">Save</button>
+	<%= form_for @test, :url => { action: :update_css } do |f| %>
+		<%= f.text_area :css, value: @test.css %>
+		<%= f.submit "Save", id: "save" %>
+	<% end %>
 </div>

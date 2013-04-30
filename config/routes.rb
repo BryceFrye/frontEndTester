@@ -3,12 +3,12 @@ FrontEndTester::Application.routes.draw do
   root :to => 'pages#home'
   
   get ':uid' => 'tests#show', as: :test
-  get ':uid/html' => 'tests#html', as: :test_html
-  get ':uid/html/update/:html' => 'tests#update_html'
-  get ':uid/css' => 'tests#css', as: :test_css
-  get ':uid/css/update/:css' => 'tests#update_css'
-  get ':uid/js' => 'tests#js', as: :test_js
-  get ':uid/js/update/:js' => 'tests#update_js'
+  get ':uid/html' => 'tests#html', as: :html
+  put ':uid/html/update' => 'tests#update_html', as: :update_test_html
+  get ':uid/css' => 'tests#css', as: :css
+  put ':uid/css/update' => 'tests#update_css', as: :update_test_css
+  get ':uid/js' => 'tests#js', as: :js
+  put ':uid/js/update' => 'tests#update_js', as: :update_test_js
   resources :tests
   # The priority is based upon order of creation:
   # first created -> highest priority.
